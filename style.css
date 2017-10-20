@@ -14,6 +14,7 @@ body {
 h1, p {
     display: block;
     color: rgba(255,255,255,0.5);
+    margin-top: 0;
 }
 h1 {
     font-size: 4em;
@@ -23,7 +24,7 @@ p {
     text-align: center;
 }
 #bloc {
-    margin-top: 23%;
+    bottom: 5%;
     height: 350px;
     width: 350px;
     background-color: #06CDFF;
@@ -45,7 +46,7 @@ i {
     margin-left: 5%;
 }
 #write {
-    margin-top: 23%;
+    bottom: 5%;
     height: 340px;
     width: 340px;
     background-color: white;
