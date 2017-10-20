@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Nombre</title>
+        <script src="https://use.fontawesome.com/f1bda5aef3.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <h1>Moins - Plus</h1>
+        
+        <p>Un nombre aléatoire entre 1 et 100... <br/>Essai de le trouver </p>
+
+        <p id="partie"></p>
+
+        <p id="niveau"></p>
+
+        <div id="bloc">
+            <span>
+                <i class="fa fa-play" aria-hidden="true"></i>
+            </span>
+        </div>
+        <input id="write" type="number" value="" onkeypress="if (event.keyCode == 13) plusmoins();"/>
+        
+
+
+
+
+
+
+
+        <script>
+
+            var partie = document.getElementById("partie"),
+                write = document.getElementById("write"),
+                niveau = document.getElementById("niveau"),
+                niveau_color = getComputedStyle(niveau).color,
+                i = 0,
+                a = 0;
+
+            reinit();    
+
+            function plusmoins() {
+                    partie.innerHTML = "Partie n°" + a + " :";
+                    value = write.value;
+                    i++;
+                    if (nombre < value) {
+                        niveau.innerHTML = "Nop c\'est plus petit que ça !!";
+                        niveau.style.color = "rgb(189, 0, 0)";
+                        write.value = "";
+                    } else if (nombre > value) {
+                        niveau.innerHTML = "Nop c\'est plus grand que ça !!";
+                        niveau.style.color = "rgb(3, 145, 43)";
+                        write.value = "";
+                    } else if (value==nombre) {
+                        if (i == 1) {
+                            niveau.innerHTML = "Le coup de chance !! Tu as trouvé <br/> Nouvelle Partie";
+                            niveau.style.color = "rgb(167, 1, 153)";
+                            write.value = "";
+                            reinit();                     
+                        } else if (i <= 4 && i > 1) {
+                            niveau.innerHTML = "Bien joué !! Tu as trouvé <br/> Nouvelle Partie";
+                            niveau.style.color = "rgb(3, 145, 43)";
+                            write.value = "";
+                            reinit();
+                        } else if (i < 8 && i > 4) {
+                            niveau.innerHTML = "Pas mauvais !!  Tu as trouvé <br/> Nouvelle Partie";
+                            niveau.style.color = "rgb(216, 115, 0)";
+                            write.value = "";
+                            reinit();
+                        } else {
+                            niveau.innerHTML = "C\'est pas terrible mais tu as trouvé <br/> Nouvelle Partie";
+                            niveau.style.color = "rgb(189, 0, 0)";
+                            write.value = "";
+                            reinit();
+                        }
+                    } else {
+                        for (var f=0; f<20; f++) {
+                            alert('T\'ira jamais nulle part dans ta misérable vie en trichant comme ça');
+                            write.value = "";
+                            reinit();
+                        }
+                    }
+                
+            }   
+            
+            function reinit() {
+                nombre = Math.floor((Math.random() * 100) + 1);
+                a++
+                i = 0;
+            }
+
+
+            var bloc = document.getElementById('bloc');
+            var op = getComputedStyle(bloc).visibility;
+            
+            bloc.onclick = function() {
+                if (op == 'visible'){
+                    
+                    bloc.style.visibility = 'hidden';
+                }
+            };
+
+
+        </script>
+
+    </body>
+</html>
